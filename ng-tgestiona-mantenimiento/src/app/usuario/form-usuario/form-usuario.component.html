@@ -1,0 +1,76 @@
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <mat-card-title>Registrar Usuario</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <br>
+    <table class="example-full-width" cellspacing="0" width="100%">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Codigo</mat-label>
+            <input matInput placeholder="Codigo Usuario."  [(ngModel)]="usuario.codUsuario" readonly>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre Completo." [(ngModel)]="usuario.nombre" >
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Nombre Usuario." [(ngModel)]="usuario.user" >
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Clave Usuario." [(ngModel)]="usuario.password" type="password">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Elegir Sucursal</mat-label>
+            <select matNativeControl required [compareWith]="compararSucursal"[(ngModel)]="usuario.sucursal" >
+              <option [ngValue]="undefined">::Seleccionar Sucursal::</option>
+              <option *ngFor="let sucursal of sucursales" [ngValue]="sucursal">{{sucursal.nombre}}</option>
+            </select>
+          </mat-form-field>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <button mat-flat-button color="primary" (click)="registrar()" *ngIf="!usuario.codUsuario else elseBlock">Registrar</button>&nbsp;
+          <ng-template #elseBlock>
+            <button mat-flat-button color="primary" (click)="actualizar()" >Actualizar</button>&nbsp;
+          </ng-template>
+          <button mat-flat-button color="accent" routerLink="/usuario">Regresar</button>
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+

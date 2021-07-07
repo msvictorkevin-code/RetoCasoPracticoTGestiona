@@ -1,0 +1,54 @@
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <mat-card-title>Registrar Producto</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <br>
+    <table class="example-full-width" cellspacing="0" width="100%">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Codigo</mat-label>
+            <input matInput placeholder="Codigo Producto." [(ngModel)]="producto.codProducto" [readonly]="true">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre Producto." [(ngModel)]="producto.nombre" >
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput placeholder="Precio Producto (##.##)." [(ngModel)]="producto.precio" type="number"   min="10" max="10000" step="1">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button mat-flat-button color="primary" (click)="registrar()" *ngIf="!producto.codProducto else elseBlock">Registrar</button>&nbsp;
+          <ng-template #elseBlock>
+            <button mat-flat-button color="primary" (click)="actualizar()" >Actualizar</button>&nbsp;
+          </ng-template>
+          <button mat-flat-button color="accent" routerLink="/producto">Regresar</button>
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+

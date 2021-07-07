@@ -1,0 +1,40 @@
+<div class="card border-primary mb-3">
+  <div class="card-header">Productos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Productos</h5>
+    <div class="my-2 text-left">
+      <button mat-raised-button color="primary" [routerLink]="['/producto/form']">Crear Producto</button>
+    </div>
+    <div *ngIf="dataSource?.length ==0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 usersContainer" *ngIf="dataSource && dataSource.length > 0">
+
+      <ng-container matColumnDef="codProducto">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let element"> {{element.codProducto}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="precio">f
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" [routerLink]="['/producto/form', element.codProducto]">Editar</button>     &nbsp;
+          <button mat-raised-button color="warn" (click)="eliminar(element)">Eliminar</button> </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
